@@ -38,6 +38,7 @@ jobs:
       with:
         file: Dockerfile
         push: true
+        context: .
         tags: kulukami/assemblyline-service-javaclassdecompiler:${{ env.AL_SERVICE_IMAGE_TAG }},kulukami/assemblyline-service-javaclassdecompiler:${{ env.AL_SERVICE_VERSION_BASE }}
 
     - name: Update 
