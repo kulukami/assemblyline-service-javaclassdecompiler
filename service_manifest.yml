@@ -1,0 +1,34 @@
+name: JavaClassDecompiler
+version: $SERVICE_TAG
+description: java class decompiler, input java.class file
+enabled: true
+
+accepts: java/class # All files
+rejects: empty
+stage: EXTRACT
+category: Extraction
+uses_tags: false
+file_required: true
+timeout: 30
+is_external: false
+
+
+config:
+  JavaActiveProcessorCount: 2
+  JavaXmsM: 64
+  JavaXmxM: 256
+
+docker_config:
+  image: $REGISTRY/cccs/assemblyline-service-javaclassdecompiler:$SERVICE_TAG
+  cpu_cores: 2.0
+  ram_mb: 512
+  ram_mb_min: 256
+  allow_internet_access: false
+
+
+heuristics:
+  - heur_id: 1
+    name: Extracted from java/class
+    score: 0
+    filetype: java/class
+    description: .java code were deompiled from a java/class file
